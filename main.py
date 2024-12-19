@@ -5,7 +5,7 @@ import random
 # Constants
 BOX_WIDTH = 440
 BOX_HEIGHT = 660
-MOTOR_SPEED = 1  # Speed of movement
+MOTOR_SPEED = 3  # Speed of movement
 
 # Function to move the robot
 def move_robot(x, y, motor_left, motor_right):
