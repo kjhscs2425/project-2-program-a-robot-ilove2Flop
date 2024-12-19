@@ -6,6 +6,7 @@ import random
 BOX_WIDTH = 440
 BOX_HEIGHT = 660
 MOTOR_SPEED = 3  # Speed of movement
+SPIN_DURATION = 3  # Time for one 360 spin, adjust as needed
 
 # Function to move the robot
 def move_robot(x, y, motor_left, motor_right):
@@ -70,14 +71,26 @@ def manual_control():
             print("Wall hit! Movement cancelled.")
         print(f"Robot position: ({x:.1f}, {y:.1f})")
 
+# Function to perform a 360-degree spin
+def spin_360():
+    """Makes the robot perform a 360-degree spin."""
+    print("Performing a 360-degree No scope!")
+    start_time = time.time()
+    while time.time() - start_time < SPIN_DURATION:
+        robot.set_motors(-1, 1)  # Opposite motor directions for spinning
+        time.sleep(0.1)  # Short delay to simulate smooth spinning
+    robot.set_motors(0, 0)  # Stop motors after spin
+    print("Spin complete!")
+
 # Main function
 def main():
-    print("Welcome to the Robot Simulator YOPPY!!!")
+    print("Welcome to the Robot Simulator Yipity Yopity This Robot is now my property!!!")
     while True:
         print("\nMenu:")
         print("1. Manual Control")
         print("2. Autonomous Movement")
-        print("3. Exit")
+        print("3. Perform 360 Spin")
+        print("4. Exit")
         choice = input("Enter your choice: ")
 
         if choice == "1":
@@ -85,6 +98,8 @@ def main():
         elif choice == "2":
             autonomous_movement()
         elif choice == "3":
+            spin_360()
+        elif choice == "4":
             print("Exiting simulator. Goodbye!")
             break
         else:
